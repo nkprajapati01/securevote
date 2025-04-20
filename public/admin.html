@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - SecureVote</title>
+    <link rel="stylesheet" href="style.css">
+     <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    <div class="dashboard-container admin-dashboard">
+        <header class="dashboard-header admin-header">
+            <h1>SecureVote Admin Panel</h1>
+             <div>
+                Welcome, Admin <span id="admin-username-display">User</span>!
+                <button id="logout-btn" class="logout-button">Logout</button>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+             <div class="admin-grid">
+                <section id="create-event-section" class="card">
+                    <h2>Create New Event</h2>
+                    <form id="create-event-form">
+                        <div class="form-group">
+                            <label for="event-name">Event Name</label>
+                            <input type="text" id="event-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="event-description">Description (Optional)</label>
+                            <textarea id="event-description"></textarea>
+                        </div>
+                        <button type="submit" class="action-button">Create Event</button>
+                    </form>
+                    <p id="event-message" class="message-text"></p>
+                </section>
+
+                <section id="add-candidate-section" class="card">
+                    <h2>Add Candidate to Event</h2>
+                    <form id="add-candidate-form">
+                         <div class="form-group">
+                            <label for="candidate-event-select">Select Event</label>
+                            <select id="candidate-event-select" required>
+                                <option value="">-- Select Event --</option>
+                                </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="candidate-name">Candidate Name</label>
+                            <input type="text" id="candidate-name" required>
+                        </div>
+                        <button type="submit" class="action-button">Add Candidate</button>
+                    </form>
+                     <p id="candidate-message" class="message-text"></p>
+                </section>
+
+                 <section id="create-user-section" class="card">
+                    <h2>Create User</h2>
+                    <form id="create-user-form">
+                        <div class="form-group">
+                            <label for="new-username">Username</label>
+                            <input type="text" id="new-username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password">Password</label>
+                            <input type="password" id="new-password" required>
+                        </div>
+                         <div class="form-group checkbox-group">
+                            <input type="checkbox" id="make-admin">
+                            <label for="make-admin">Make Admin?</label>
+                        </div>
+                        <button type="submit" class="action-button">Create User</button>
+                    </form>
+                     <p id="user-message" class="message-text"></p>
+                </section>
+
+                <section id="overview-section" class="card full-width">
+                    <h2>Events Overview & Live Results</h2>
+                    <div id="admin-events-display">
+                        <p>Loading events and results...</p>
+                         </div>
+                </section>
+
+                  <section id="admin-blockchain-viewer" class="card full-width">
+                    <h2>Blockchain Data (Verification)</h2>
+                    <button id="admin-view-blockchain-btn" class="secondary-button">View Blockchain</button>
+                    <pre id="admin-blockchain-data">Blockchain data will appear here...</pre>
+                </section>
+            </div>
+        </main>
+
+         <div id="notification" class="notification"></div> <footer>
+            <p>&copy; 2025 SecureVote Project (Admin Panel)</p>
+        </footer>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
