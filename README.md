@@ -19,8 +19,6 @@ Whether you're building an online voting system for schools, organizations, or g
 ## Technologies Used
 
 - **Frontend**: JavaScript, CSS, HTML
-- **Backend**: (If applicable, mention here)
-- **Additional Libraries/Frameworks**: (e.g., React, Node.js, etc.)
 
 ## Getting Started
 
